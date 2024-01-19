@@ -10,6 +10,8 @@ Alexander's theorem was the first major result toward providing the connection b
 
 My thesis begins by giving Yamada-Vogel's algorithmic proof of Alexander's theorem. This proof is superior to Alexander's original proof in that it can easily be implemented in a computer program to turn knots to braids and also has a beautiful corollary. Then I provide a proof of Markov's theorem (the proof is due to P. Traczyk). Then I study construction of two invariants from representation of braid groups, viz., the Alexander-Conway polynomial from the Burau representation and the Jones polynomial from the Temperley-Lieb algebra.
 
+### Representation theory of braid groups
+
 ### Tait conjectures
 
 ### HOMFLY polynomial
