@@ -9,3 +9,9 @@ Braid theory is the study of braids. An $n$-braid is an intertwining of $n$ stri
 Alexander's theorem was the first major result toward providing the connection between knot theory and braid theory. It states that any knot or link can be realised as the closure of a braid. This, however, does not say anything about the uniqueness of the braid. Markov's theorem, which came two decades later, gives moves relating any two closed braid representatives of a knot or link, while simultaneously preserving the closed braid structure. Thus, Alexander's theorem and Markov's theorem form the cornerstone of any study of knots via closed braids. A representation of a group is a homomorphism from the group to some other group, most often the general linear group. Using Markov's theorem, we can construct knot or link invariants from representations of braid groups. 
 
 My thesis begins by giving Yamada-Vogel's algorithmic proof of Alexander's theorem. This proof is superior to Alexander's original proof in that it can easily be implemented in a computer program to turn knots to braids and also has a beautiful corollary. Then I provide a proof of Markov's theorem (the proof is due to P. Traczyk). Then I study construction of two invariants from representation of braid groups, viz., the Alexander-Conway polynomial from the Burau representation and the Jones polynomial from the Temperley-Lieb algebra.
+
+### Tait conjectures
+
+### HOMFLY polynomial
+
+### Khovanov homology as the categorification of the Jones polynomial
