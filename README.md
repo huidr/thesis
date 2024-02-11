@@ -19,3 +19,5 @@ My thesis begins by giving Yamada-Vogel's algorithmic proof of Alexander's theor
 ### Khovanov homology as a categorification of the Jones polynomial
 
 [TO BE UPDATED]
+
+The draft of my thesis is available [here](thesis.pdf). I am currently writing it.
