@@ -1,0 +1,21 @@
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+\definecolor{myColor}{RGB}{193,225,193}
+\newcommand{\B}{\ensuremath{\mathcal{B}}}
+\newcommand{\A}{\ensuremath{\mathcal{A}}}
+\linespread{1.1}
+
+\patchcmd{\tocchapter}{#1}{\MakeUppercase{#1}}{}{}
+
+\makeatletter
+%\renewcommand\@pnumwidth{1em} % <-- depending on the total number of pages
+\patchcmd{\@tocline}
+  {\hfil}
+  {\leaders\hbox{\,.\,}\hfil}
+  {}{}
+\makeatother
+
+\DeclareRobustCommand{\gobblefour}[5]{}
+\newcommand*{\SkipTocEntry}{\addtocontents{toc}{\gobblefour}}
+
+\renewcommand{\baselinestretch}{1.1}\normalsize
