@@ -1,3 +1,7 @@
+title: thesis
+description: description of your site's purpose
+show_downloads: false
+
 remote_theme: pages-themes/midnight@v0.2.0
 plugins:
 - jekyll-remote-theme
