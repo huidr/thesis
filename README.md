@@ -1,23 +1,23 @@
-## On Braid Groups and Link Invariants
+# [Knots, Braids, the Jones Polynomial and Khovanov Homology](https://huidr.github.io/thesis/)
 
-My thesis explores the connection between knots and braids. Knot theory and theory of braid groups are two representative topics of low-dimensional topology.
+Despite its lengthy title, my thesis has one main topic of study: the Jones polynomial. The title is simply a listing of the four chapters it has, each of which has a bold objective. The first chapter [Knots](#knots) lays the foundation for our study by introducing knot theory and much of the discussion is directed at polynomial invariants. We end the chapter by introducing the Jones polynomial. The second chapter [Braids](#braids) introduces the theory of braids and representation of braid groups. The object of this chapter is to establish the connection of knots with braids and how we may construct polynomial invariants from representations of the Artin braid group. In the third chapter [the Jones Polynomial](#the-jones-polynomial), we construct the Jones polynomial and use it to prove the Tait conjectures. In the fourth chapter [Khovanov Homology], we categorify the Jones polynomial and in this way, we generalize the Jones polynomial to a homology theory.
 
-Knot theory is the study of mathematical knots which are closed, non-self-intersecting curves that are embedded in three dimensions. Loosely speaking, two knots are said to be isotopic (equivalent) if one can be continuously deformed into the other (cutting and rejoining are not allowed). A knot invariant is a function that gives the same output for any two isotopic knots and as such it can distinguish a knot from another. Classification of knots is one of the most important goals of knot theory. This means that knot invariants form an important study in knot theory.
+## The Four Chapters &mdash; A Short Description
 
-Braid theory is the study of braids. An $n$-braid is an intertwining of $n$ strings attached to top and bottom bars such that each string never turns back up (just like hair braids). Loosely speaking, two $n$-braids are said to be isotopic (equivalent) if one can be continuously deformed into the other. Interestingly, $n$-braids form a group under the operation of concatenation. The Artin braid group $B_n$ is the group of all equivalent classes of $n$-braids under concatenation (equivalence provided by isotopy). The act of connecting two corresponding ends of a braid in a parallel fashion is called closing the braid. The closure of a braid always yields a knot or a link (disjoint union of knots).
+### Knots
 
-Alexander's theorem was the first major result toward providing the connection between knot theory and braid theory. It states that any knot or link can be realised as the closure of a braid. This, however, does not say anything about the uniqueness of the braid. Markov's theorem, which came two decades later, gives moves relating any two closed braid representatives of a knot or link, while simultaneously preserving the closed braid structure. Thus, Alexander's theorem and Markov's theorem form the cornerstone of any study of knots via closed braids. A representation of a group is a homomorphism from the group to some other group, most often the general linear group. Using Markov's theorem, we can construct knot or link invariants from representations of braid groups. 
+This is a study of topics in knot theory which would be relevant to our study of the Jones polynomial. We look at knot invariants, colorability, alternating links and polynomial invariants. We introduce the Jones polynomial.
 
-My thesis begins by giving Yamada-Vogel's algorithmic proof of Alexander's theorem. This proof is superior to Alexander's original proof in that it can easily be implemented in a computer program to turn knots to braids and also has a beautiful corollary. Then I provide a proof of Markov's theorem (the proof is due to P. Traczyk). Then I study construction of two invariants from representation of braid groups, viz., the Alexander-Conway polynomial from the Burau representation and the Jones polynomial from the Temperley-Lieb algebra.
+### Braids
 
-### Representation theory of braid groups
+We introduce braids and the Artin braid group. We establish the connection of knots with braids by stating and proving Alexander's theorem and Markov's theorem. We show that we can construct invariants from representations of braid groups. In particular, we use the Burau representation to construct the Alexander-Conway polynomial, a predecessor of the Jones polynomial.
 
-### Tait conjectures
+### The Jones Polynomial
 
-### HOMFLY polynomial
+We describe the Temperley-Lieb algebra as a representation of the Artin braid group and construct the Jones polynomial from it. We introduce the state-summation model of the Jones polynomial and use it to prove some of the conjectures of classical knot theory. These are the famous Tait conjectures. We end the chapter by generalizing the Jones polynomial to the HOMFLY-PT polynomial.
 
-### Khovanov homology as a categorification of the Jones polynomial
+### Khovanov Homology
 
 [TO BE UPDATED]
 
-The draft of my thesis is available [here](thesis.pdf). I am currently writing it.
+The draft of my thesis is available [here](thesis.pdf). This was written in December 2023. A lot of things have changed since then. I am currently writing it and will soon upload it.
