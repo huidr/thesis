@@ -1,5 +1,3 @@
-# [Knots, Braids, the Jones Polynomial and Khovanov Homology](https://huidr.github.io/thesis/)
-
 Despite its lengthy title, my thesis has one main topic of study: the Jones polynomial. The title is simply a listing of the four chapters it has, each of which has a bold objective. The first chapter [Knots](#knots) lays the foundation for our study by introducing knot theory and much of the discussion is directed at polynomial invariants. We end the chapter by introducing the Jones polynomial. The second chapter [Braids](#braids) introduces the theory of braids and representation of braid groups. The object of this chapter is to establish the connection of knots with braids and how we may construct polynomial invariants from representations of the Artin braid group. In the third chapter [the Jones Polynomial](#the-jones-polynomial), we construct the Jones polynomial and use it to prove the Tait conjectures. In the fourth chapter [Khovanov Homology](#khovanov-homology), we categorify the Jones polynomial and in this way, we generalize the Jones polynomial to a homology theory.
 
 ## The Four Chapters &mdash; A Short Description
