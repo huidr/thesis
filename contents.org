@@ -1,0 +1,28 @@
++ Introduction
++ Survey
+  + Knot theory
+    + Definitions, invariants
+    + Polynomial invariants
+    + Alternating diagrams, knots, links
+    + Seifert surfaces and Seifert's algorithm
+  + Representation theory
+  + Theory of braids
+    + The Artin braid group
+    + Alexander's theorem
+    + Markov's theorem
+    + Burau representation
+    + Temperley-Leib algebra
+  + Algebraic topology
+    + Fundamental group, knot group
+    + Homology theory
+  + Category theory
+    + Categories, functors, natural transformations
+    + Categorification
++ Resolving the Tait conjectures
+  + States-sum model, adequacy, etc.
+  + The first Tait conjecture
+  + The second Tait conjecture
+  + The third Tait conjecture
++ Categorification of the Jones polynomial to Khovanov homology
+  + The cube category, Bar-Natan category, etc.
++ Conclusion
