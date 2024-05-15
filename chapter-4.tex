@@ -1,16 +1,296 @@
-\chapter{Khovanov Homology}
+\chapter{Proofs of the Tait conjectures}
+\label{chapter4}
 
-\section{Introduction}
+\section{The first Tait conjecture}
 
-\section{The Cube Category}
+As mentioned earlier, one of the major triumphs of the Jones polynomial is in resolving some old conjectures in classical knot theory. Tait was a physicist and one of the earliest knot theorists and as such, his work was quite non-rigorous. He made a number of assumptions or conjectures while tabulating knots according to crossing number. These conjectures were open for several decades until they were proven to be true for special cases (i.e., alternating knots) using the Jones polynomial.
 
-\section{Categorification of the Jones Polynomial}
+Let $D$ be a knot (link) diagram. Give it an orientation. Pick any point $p \in D$ lying on the diagram. Traverse, starting at $p$, on the diagram until we reach $p$ again. If the crossings alternate between $\KPB$ and $\KPE$, we say $S$ is an alternating diagram. An alternating link is one that has an alternating diagram.
 
-\section{}
+An isthmus is simply a nugatory crossing can be removed by using a variant of $\mathcal{R}^1$ (shown in the figure).
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=.1]{images/reduced-alternating.png}
+\end{figure}
 
-\section{}
+An alternating diagram is said to be reduced if there is no isthmus. The Tait conjectures are only true for the case of reduced alternating diagrams.
 
-\section{}
+Different authors may give different formulations of the conjectures but the main conjectures are listed below.
 
-\section{}
+\begin{conjecture}
+\label{cha:resolv-tait-conj}
+Any reduced alternating diagram of a link has the fewest possible crossings.
+\end{conjecture}
 
+\begin{conjecture}
+\label{cha:resolv-tait-conj}
+The writhe is an invariant for reduced alternating link diagrams.
+\end{conjecture}
+
+\begin{conjecture}[The Flyping conjecture]
+\label{cha:resolv-tait-conj}
+Any two reduced alternating diagrams of an oriented, prime alternating link are related by a finite sequence of flyping moves.
+\end{conjecture}
+
+The following additional conjecture is also sometimes listed. It follows from the second conjecture.
+
+\begin{conjecture}
+\label{cha:resolv-tait-conj}
+Amphicheiral alternating knots have even crossing number.
+\end{conjecture}
+
+We use the Jones polynomial to prove these conjectures except the flyping conjecture. Many other interesting corollaries can be deduced from these conjectures (theorems) and their proofs. We use the state-summation model of the bracket polynomial for the proofs.
+
+Let $D$ be an unoriented link diagram. Recall that each crossing $x(D)$ may be resolved in two ways: $\KPB \xrightarrow{A} \KPC$ or $\KPB \xrightarrow{B} \KPD$ according to which smoothing gets coefficient $A$ or $B = A^{-1}$ in the bracket skein relation. A state $S(D)$ of $D$ is what we get after giving each crossing of $D$ a smoothing of either $A$ or $B$. A state $S(D)$ is a union of disjoint circles. The number of connected components (circles) in state $S(D)$ is denoted by $\sharp S(D)$.
+
+Let $S_A(D)$ denote the state in which every crossing has $A$-smoothing. Likewise, $S_B(D)$ denotes the state in which every crossing has $B$-smoothing.
+
+We will use the textbook of Lickorish \cite{lickorish1997} as our reference.
+
+\begin{definition}
+\label{sec:first-tait-conj-2}
+Let $S_{1B}(D)$ be a state in which exactly one crossing has $B$-smoothing. Similarly, let $S_{1A}(D)$ be a state in which exactly one crossing has $A$-smoothing. Then $D$ is said to be plus-adequate if $\sharp S_A(D) > \sharp S_{1B}(D)$ and minus-adequate if $\sharp S_B(D) > \sharp S_{1A}(D)$. The link diagram $D$ is said to be adequate if it is both plus-adequate and minus-adequate.
+\end{definition}
+
+\begin{proposition}
+\label{sec:first-tait-conj-3}
+A link diagram $D$ is plus-adequate if no connected component in $S_A(D)$ crosses itself in the original diagram (before smoothing).
+\end{proposition}
+
+This may be easily checked. Indeed, one checks the only way $\sharp S_AD \leq \sharp S_{1B}D$ can hold is the following case:
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=.3]{images/test-adequacy.png}
+\end{figure}
+
+Thus, if no connected component in $S_AD$ crosses itself in the original diagram, $D$ is plus-adequate. A similar proposition holds for minus-adequacy.
+
+\begin{lemma}
+\label{sec:first-tait-conj-5}
+Reduced alternating diagrams are adequate.
+\end{lemma}
+
+Before we prove this, see that the following diagram represents a way to look at smoothing. We may put the labels $A$ and $B$ near the crossings in that manner. In $A$-smoothing, the regions with label $A$ are connected and in $B$-smoothing, the regions with label $B$ are connected after the smoothing.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=.4]{images/ABsmoothing.png}
+\end{figure}
+
+\begin{proof}[Proof of Lemma \ref{sec:first-tait-conj-5}]
+\label{sec:first-tait-conj-6}
+Given any diagram $D$, we label all the crossings this way. Let $D_G$ be the graph associated with $D$ when we forget the over-crossing and under-crossing data, that is, $\KPB \to \KPF$ and $\KPE \to \KPF$. Since $D$ is alternating, all the faces of $D_G$ have the same labels. Further, this gives a chessboard coloring in which each face is colored either $A$ or $B$ depending on the label. Observe that the circles in $S_AD$ are the boundaries of the regions colored in either $A$ or $B$. Since there are no isthmi, no connected component in $S_AD$ crosses itself in the original diagram. Thus $D$ is plus-adequate. The case of minus-adequacy follows similarly.
+\end{proof}
+
+We use the term \emph{span} of a polynomial to denote the difference of the highest exponent and lowest exponent in the polynomial, that is, span$(P(x)) = \max(P(x)) - \min(P(x))$, where $\max()$ and $\min()$ denote the highest and lowest exponents in $P(x)$. 
+
+\begin{proposition}
+\label{sec:first-tait-conj-9}
+The span of the bracket $\left< \cdot \right>$ is a link invariant.
+\end{proposition}
+
+\begin{proof}
+\label{sec:first-tait-conj-10}
+The bracket $\left< \cdot \right>$ is an $\mathcal{R}^{2,3}$-invariant. It changes by a factor of $A^{\pm 3}$ under $\mathcal{R}^1$ which does not change the span.
+\end{proof}
+
+\begin{lemma}
+\label{sec:first-tait-conj-17}
+The bracket $\left< \cdot \right>$ satisfies the following inequality
+\begin{displaymath}
+\max \langle D \rangle \leq n + 2(\sharp S_A - 1),
+\end{displaymath}
+where the equality holds when $D$ is plus-adequate.
+\end{lemma}
+
+\begin{proof}
+  \label{sec:first-tait-conj-18}
+Let $\mathcal{S}$ be the union of all $2^n$ states of a link diagram $D$. The state-summation of bracket polynomial can be written as 
+\begin{displaymath}
+\langle D \rangle = \sum_{S}^{S\in \mathcal{S}} A^{a(S)-b(S)} (-A^2 - A^{-2})^{\sharp S - 1},
+\end{displaymath}
+where $a(S)$, $b(S)$ and $\sharp S$ denote the number of $A$-smoothings, $B$-smoothings and connected components in the state $S$. 
+  Each state contributes $A^{a(S)-b(S)} (-A^2 - A^{-2})^{\sharp S - 1}$ to the sum. Consider the state $S_A$ where all crossings have $A$-smoothings, that is, $a(S) = n$ and $b(S) = 0$. The highest exponent in the contribution from state $S_A$ is then $n + 2(\sharp S_A - 1)$.
+  
+  Suppose $S_2$ is a state obtained from $S_1$ by changing exactly one of the $A$-smoothings in $S_1$ (if any) to a $B$-smoothing. State $S_1$ contributes a highest exponent of $a(S_1)-b(S_1)+2(\sharp S_1 -1)$ while $S_2$ contributes a highest exponent of $a(S_1)-b(S_1)-2 + 2(\sharp S_2 -1)$ since there is one more $B$-smoothing and one less $A$-smoothing. But $\sharp S_2 = \sharp S_1 \pm 1$ as we may either create a new loop or merge two loops into one. Thus, the highest exponent either drops by $4$ or remains the same while going from $S_1$ to $S_2$. This means that the highest exponent can never go up while changing $A$-smoothings to $B$-smoothings.
+
+  In general, there could be multiple terms with exponent $n + 2(\sharp S_A - 1)$. These terms may cancel each other such that the maximum exponent in the bracket polynomial may be strictly less than $n + 2(\sharp S_A - 1)$, hence the inequality.
+
+Note, however, that if $D$ is plus-adequate, then $\sharp S_A = \sharp S_{1B} - 1$, so there is only one term with that exponent and hence we have a strict maximum.
+\end{proof}
+
+\begin{lemma}
+\label{sec:first-tait-conj-19}
+The bracket $\left< \cdot \right>$ satisfies the following inequality
+\begin{displaymath}
+\min \langle D \rangle \geq -n - 2(\sharp S_B - 1),
+\end{displaymath}
+where the equality holds when $D$ is minus-adequate.
+\end{lemma}
+
+\begin{proof}
+\label{sec:first-tait-conj-20}
+We proceed exactly the same way as the proof above.
+\end{proof}
+
+\begin{lemma}
+\label{sec:first-tait-conj-21}
+For a link diagram $D$ of $n$ crossings, we have $\sharp S_A + \sharp S_B \leq n+2$. The equality holds when $D$ is adequate.
+\end{lemma}
+
+\begin{proof}
+\label{sec:first-tait-conj-22}
+We use induction on $n$. It is obviously true when $n=0$. Suppose it is true for $n-1$ crossings. Choose a crossing of $D$. Out of the two possible ways of smoothing this crossing, at least one of them yields a connected diagram $D^{\prime}$. Without loss of generality, suppose this is an $A$-smoothing. Then $\sharp S_A(D) = \sharp S_A(D^{\prime})$ and $\sharp S_B(D) = \sharp S_B (D^{\prime}) \pm 1$. By induction hypothesis, we have 
+\begin{displaymath}
+\sharp S_A(D) + \sharp S_B(D) = \sharp S_A(D^{\prime}) + \sharp S_B(D^{\prime}) \pm 1 \leq (n-1) + 2 \pm 1 \leq n + 2.
+\end{displaymath}
+For the case of adequacy, we have $\sharp S_A(D) = \sharp S_A(D^{\prime})$ and $\sharp S_B(D) = \sharp S_B (D^{\prime}) + 1$, hence the equality.
+\end{proof}
+
+
+\begin{lemma}
+\label{sec:first-tait-conj-7}
+For a link diagram $D$ of $n$ crossings, the span of its bracket $\left< \cdot \right>$ satisfies the inequality \emph{span}$\langle D \rangle \leq 4n$. The equality holds when $D$ is adequate.
+\end{lemma}
+
+\begin{proof}
+\label{sec:first-tait-conj-8}
+Using the inequalities from Lemmas \ref{sec:first-tait-conj-17} and \ref{sec:first-tait-conj-19}, we get span$\langle D \rangle \leq 2n + 2(\sharp S_A + \sharp S_B- 2) $. Using the inequality from Lemma \ref{sec:first-tait-conj-21}, we get span$\langle D \rangle \leq 4n$. If $D$ is adequate, all the inequalities become equalities, and we have span$\langle D \rangle = 4n$.
+\end{proof}
+
+\begin{lemma}
+\label{sec:first-tait-conj-11}
+Any two reduced alternating diagrams of isotopic links have the same number of crossings.
+\end{lemma}
+
+\begin{proof}
+\label{sec:first-tait-conj-12}
+Since a reduced alternating diagram is adequate, we have span$\langle D \rangle = 4n$. But the span is invariant, therefore, any other reduced alternating diagram isotopic to $D$ also has $n$ crossings.
+\end{proof}
+
+\begin{proof}[Proof of the first Tait conjecture]
+  \label{sec:first-tait-conj-13}
+  This is clear from Lemma \ref{sec:first-tait-conj-7}. Since the span of the bracket polynomial is invariant, we must have $n \leq n^{\prime}$, where $n$ is the number of crossings in a reduced alternating diagram and $n^{\prime}$ is the number of crossings in any other diagram of the same (isotopic) link.
+\end{proof}
+
+The crossing number of a link is the minimal number of crossings in any diagram of that link. It is clear that the number of crossings in any reduced alternating diagram gives the crossing number of that link.
+
+\section{The second Tait conjecture}
+
+One must be careful in computing writhe of an oriented link diagram. Let $D$ be an oriented link diagram. In general, $D$ has multiple components. As usual, we use $D^i$ to denote the $i$th component. The writhe of $D^i$ is defined to be the sum of all the signs of the crossings of $D^i$ only, that is, we regard $D^i$ as a knot diagram and ignore all other components of $D$.
+
+The writhe of the oriented link diagram $D$ is defined to be the sum of the writhes $w(D^i)$ of its components and linking numbers $lk(D^i, D^j)$. That is, 
+\begin{displaymath}
+w(D) = \sum_i^{}w(D^i) + \sum_{i < j}^{} lk(D^i, D^j).
+\end{displaymath}
+
+Given any link diagram $D$, we can replace each segment by $r$ parallel copies of itself while preserving the information of crossings. Denote the resulting diagram by $D^r$. A particular example is given below.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=.3]{images/rHopf.png}
+\end{figure}
+
+Observe that $n$ crossings in $D$ corresponds to $nr^2$ crossings in $D^r$. Further if $S(D^r)$ is the state of $D^r$ corresponding to state $S(D)$ of $D$, then $\sharp S(D^r) = r\sharp S(D)$ as seen from the picture below. That is, each loop in any state of $D$ corresponds to $r$ parallel loops in the corresponding state of $D^r$. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=.4]{images/rparallels.png}
+\end{figure}
+
+
+\begin{proposition}
+\label{sec:second-tait-conj-3}
+If $D$ is plus-adequate, $D^r$ is also plus-adequate. The same is true for minus-adequacy and hence adequacy.
+\end{proposition}
+
+\begin{proof}
+\label{sec:second-tait-conj-2}
+The observation above takes this clear. If $D$ is plus-adequate, then no connected component in $S_A(D)$ crosses itself in the original diagram (before smoothing). The same is true for $S_A(D^r)$ as well since each connected component in $S_A(D^r)$ is simply a parallel of some connected component in $S_A(D)$. Similarly for minus-adequacy and adequacy.
+\end{proof}
+
+In general, if $D$ is a knot diagram, then $D^r$ becomes a link diagram.
+
+\begin{lemma}
+\label{sec:second-tait-conj-5}
+Let $D_{\alpha}$ be a plus-adequate oriented link diagram with $n_{\alpha}$ crossings. Let $D_{\beta}$ be any other oriented link diagram with $n_{\beta}$ crossings, which is planar isotopic to $D_{\alpha}$. Then 
+\begin{displaymath}
+n_{\alpha} - w(D_{\alpha}) \leq n_{\beta} - w(D_{\beta}).
+\end{displaymath}
+Equivalently, the quantity $n_{\alpha} - w(D_{\alpha})$ attains least possible value when $D_{\alpha}$ is plus-adequate.
+\end{lemma}
+
+\begin{proof}
+\label{sec:second-tait-conj-4}
+Let $D_{\alpha}$ and $D_{\beta}$ be two isotopic oriented link diagrams such that $D_{\alpha}$ is plus-adequate. Suppose $D_{\beta}^i$ is the component corresponding to $D_{\alpha}^i$ in this isotopy. In general, $D_{\alpha}^i$ and $D_{\beta}^j$ may have different writhes but there exist non-negative integers $p_i$ and $q_i$ such that $w(D_{\alpha}^i) + p_i = w(D_{\beta}^i) + q_i$. We can add a tiny positive kink (a variant of $\mathcal{R}^1$) somewhere in $D_{\alpha}^i$; this twist has to be so tiny that it does not affect any other section of $D_{\alpha}$. Indeed, we add $p_i$ twists in $D_{\alpha}^i$ and $q_i$ twists in $D_{\beta}$ and do this for all the components of the links. The resulting link diagrams are denoted by $D_{\alpha}^{\sharp}$ and $D_{\beta}^{\sharp}$. It follows that 
+\begin{align*}
+  w(D_{\alpha}^{\sharp}) &= \sum_i^{}w(D_{\alpha}^i) + \sum_i^{}p_i + \sum_{i<j}^{}lk(D_{\alpha}^i, D_{\alpha}^i), \\
+  w(D_{\beta}^{\sharp}) &= \sum_i^{}w(D_{\beta}^i) + \sum_i^{}q_i + \sum_{i<j}^{}lk(D_{\beta}^i, D_{\beta}^i).
+\end{align*}
+The linking numbers are invariant, while $w(D_{\alpha}^i) + p_i = w(D_{\beta}^i) + q_i$ for each $i$. It follows that $w(D_{\alpha}^{\sharp}) = w(D_{\beta}^{\sharp})$. Now consider $D_{\alpha}^{\sharp r}$ and $D_{\beta}^{\sharp r}$.
+
+It is obvious that $D_{\alpha}^{\sharp r}$ and $D_{\beta}^{\sharp r}$ have the same writhe and are planar isotopic. After all, $D_{\alpha}^{\sharp}$ is obtained from $D_{\alpha}$ through $\mathcal{R}^1$ and $D_{\alpha}^{\sharp r}$ is obtained from $D_{\alpha}^{\sharp}$ by replacing the segments with parallel segments. As such, $D_{\alpha}^{\sharp r}$ and $D_{\beta}^{\sharp r}$ have the same Jones polynomial $V_L(t)$. Since they have the same writhe, it follows that $\langle D_{\alpha}^{\sharp r} \rangle = \langle D_{\beta}^{\sharp r} \rangle$. 
+
+See that $D_{\alpha}^{\sharp}$ and $D_{\beta}^{\sharp}$ have $n_{\alpha} + \sum_i p_i$ and $n_{\beta} + \sum_i q_i$ crossings respectively since each twist adds one crossing. It follows that, by an observation above, $D_{\alpha}^{\sharp r}$ and $D_{\beta}^{\sharp r}$ have $r^2(n_{\alpha} + \sum_i p_i)$ and $r^2(n_{\alpha} + \sum_i p_i)$ crossings respectively.
+
+Let $\sharp S_{A,\alpha}$ denote the number of connected components in the state $S_{A,\alpha}$ of $D_{\alpha}$ where all crossings receive $A$-smoothing. This corresponds to $\sharp S_{A,\alpha} + \sum_i p_i$ connected components in $D_{\alpha}^{\sharp}$ since each twist adds a new loop, and $(\sharp S_{A,\alpha} + \sum_i^{} p_i)r$ connected components in $D_{\alpha}^{\sharp r}$. Similarly, there will be $(\sharp S_{A,\beta} + \sum_i^{} q_i)r$ connected components in the state of $D_{\beta}^{\sharp r}$ where all crossings receive $A$-smoothing.
+
+Observe that the tiny twists we added to make writhes equal preserves adequacy. This is because the twists only introduce extra loops which do not cross itself in the original diagram. In particular, $D_{\alpha}^{\sharp}$ is plus-adequate. By Proposition \ref{sec:second-tait-conj-3}, $D_{\alpha}^{\sharp r}$ is plus-adequate. By Lemmas \ref{sec:first-tait-conj-17} and \ref{sec:first-tait-conj-19}, we get 
+\begin{align*}
+  \max\langle D_{\alpha}^{\sharp r} \rangle &= r^2(n_{\alpha} + \sum_i^{} p_i) + 2r(\sharp S_{A,\alpha} + \sum_i^{} p_i) - 2, \\
+  \max\langle D_{\beta}^{\sharp r} \rangle &\leq r^2(n_{\beta} + \sum_i^{} q_i) + 2r(\sharp S_{A,\beta} + \sum_i^{} q_i) - 2.  
+\end{align*}
+Since $\max\langle D_{\alpha}^{\sharp r}\rangle = \max\langle D_{\beta}^{\sharp r}\rangle$, we have the inequality below 
+\begin{displaymath}
+  r(n_{\alpha} + \sum_i^{} p_i) + 2(\sharp S_{A,\alpha} + \sum_i^{} p_i) \leq r(n_{\beta} + \sum_i^{} q_i) + 2(\sharp S_{A,\beta} + \sum_i^{} q_i).
+\end{displaymath}
+This inequality holds for all values of $r$. Taking very large values of $r$, we can compare the coefficients, so that 
+\begin{displaymath}
+n_{\alpha} + \sum_i^{} p_i \leq n_{\beta} + \sum_i^{} q_i.
+\end{displaymath}
+
+But $w(D_{\alpha}) + \sum_i^{} p_i = w(D_{\beta}) + \sum_i^{}q_i$. Using this equation in the above inequality, we conclude that $n_{\alpha} - w(D_{\alpha}) \leq n_{\beta} - w(D_{\beta})$.
+\end{proof}
+
+\begin{proof}[Proof of the second Tait conjecture]
+\label{sec:second-tait-conj-6}
+  If both $D_{\alpha}$ and $D_{\beta}$ are reduced alternating, then by Lemma \ref{sec:second-tait-conj-5}, it follows that $n_{\alpha} - w(D_{\alpha}) = n_{\beta} - w(D_{\beta})$. But by the first Tait conjecture, $n_{\alpha} = n_{\beta}$. Therefore, $w(D_{\alpha}) = w(D_{\beta})$. 
+\end{proof}
+
+This conjecture also has some interesting corollaries and implications. Indeed, some authors formulate the second Tait conjecture in the form of one of the following corollaries.
+
+\begin{corollary}
+\label{sec:second-tait-conj-8}
+  An amphicheiral (or acheiral) alternating link has zero writhe.
+\end{corollary}
+
+\begin{proof}
+\label{sec:second-tait-conj-10}
+If link diagram $D$ has writhe $w(D)$, its mirror image must have writhe $-w(D)$. Since it is amphicheiral alternating, the writhes are equal and therefore, $w(D)$ must be zero.
+\end{proof}
+
+\begin{corollary}
+\label{sec:second-tait-conj-9}
+  An amphicheiral alternating link has an even crossing number.
+\end{corollary}
+
+\begin{proof}
+\label{sec:second-tait-conj-11}
+  It follows from Corollary \ref{sec:second-tait-conj-8}, because if it has an odd crossing number, it cannot have a zero writhe.
+\end{proof}
+
+\section{The third Tait (flyping) conjecture}
+
+We shall not prove the flyping conjecture here. It is only stated and discussed here for the sake of completeness. There is a geometric proof by Thistlethwaite and William Menasco.
+
+The flype (or flyping move) is defined as the one given in the diagram below:
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=.13]{images/flype.png}
+\end{figure}
+
+Recall that the conjecture states: Any two reduced alternating diagrams of an
+oriented, prime alternating link are related by a finite sequence of flyping moves.
+
+It should be noted that the flyping conjecture implies other Tait conjectures. For instance, the second Tait conjecture follows from the flyping conjecture. Observe that each flype move preserves writhe. Since, any two reduced alternating link diagrams of isotopic links are related by a finite sequence of flyping moves, it follows that writhe is an invariant for reduced alternating link diagrams. 
