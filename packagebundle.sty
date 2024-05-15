@@ -2,26 +2,40 @@
 \ProvidesPackage{packagebundle}
 %[2022/02/09 v0.1 A custom-made LaTeX package for stylish math writing]
 
-\RequirePackage[margin=1.2in]{geometry}
+\RequirePackage[margin=1.25in]{geometry}
 \RequirePackage[bookmarksdepth=4]{hyperref}
 \RequirePackage{pdfpages}
 \RequirePackage{xcolor}
 \RequirePackage{enumitem}
 \setlist[enumerate]{itemsep=-1mm}
+\RequirePackage[toc, page]{appendix}
+%\RequirePackage[backend=biber]{biblatex}
+
+\RequirePackage[sc, small, center]{titlesec}
+% small caps, small titles, center alignment
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
 \RequirePackage{etoolbox}
 \RequirePackage{mathtools}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{amsfonts}
+
+\RequirePackage{pict2e}
+\RequirePackage{tikz}
+
 \RequirePackage{upgreek}
 
 %\swapnumbers
+\setlength{\topsep}{8pt}
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{propdef}[theorem]{Proposition/Definition}
+\newtheorem{theodef}[theorem]{Theorem/Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
 
 \theoremstyle{defintion}
@@ -31,11 +45,28 @@
 \newtheorem{exercise}[theorem]{Exercise}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[theorem]{Remark}
 \newtheorem*{note}{Note}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%% proof redefined
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  %\vspace{-\topsep}% remove the space after the theorem
+  \pushQED{\qed}%
+  \normalfont
+  \topsep0pt \partopsep0pt % no space before
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+  \addvspace{6pt plus 6pt} % some space after
+}
+\makeatother
+
 \hypersetup{
-		colorlinks=true,
+		colorlinks=false,
 		linkcolor=blue,
 		filecolor=magenta,
 		urlcolor=blue

@@ -1,21 +1,179 @@
-\setlength{\parskip}{6pt}
-\setlength{\parindent}{0pt}
+\pagestyle{plain}
+%\setlength{\abovedisplayskip}{0pt}
+%\setlength{\belowdisplayskip}{0pt}
+
+% space before and after equations
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize%
+    \setlength\abovedisplayskip{8pt}%
+    \setlength\belowdisplayskip{8pt}%
+    \setlength\abovedisplayshortskip{4pt}%
+    \setlength\belowdisplayshortskip{4pt}%
+}
+
+%\setlength{\parskip}{0pt}
+%\setlength{\parindent}{0pt}
 \definecolor{myColor}{RGB}{193,225,193}
 \newcommand{\B}{\ensuremath{\mathcal{B}}}
 \newcommand{\A}{\ensuremath{\mathcal{A}}}
-\linespread{1.1}
+\linespread{1.3}
 
 \patchcmd{\tocchapter}{#1}{\MakeUppercase{#1}}{}{}
+\setcounter{tocdepth}{0}
+
+%\renewcommand\@pnumwidth{1em} % <-- depending on the total number of pages
+%\patchcmd{\@tocline}
+%  {\hfil}
+%  {\leaders\hbox{\,.\,}\hfil}
+%  {}{}
+%\def\l@subsection{\@tocline{2}{0pt}{3.4pc}{5pc}{}}
+%\makeatother
+
+%\DeclareRobustCommand{\gobblefour}[5]{}
+%\newcommand*{\SkipTocEntry}{\addtocontents{toc}{\gobblefour}}
+
+%\renewcommand{\thesection}{\thechapter.\arabic{section}}
+%\renewcommand{\baselinestretch}{1.1}\normalsize
+
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\usetikzlibrary{knots}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% SKEIN RELATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
-%\renewcommand\@pnumwidth{1em} % <-- depending on the total number of pages
-\patchcmd{\@tocline}
-  {\hfil}
-  {\leaders\hbox{\,.\,}\hfil}
-  {}{}
+
+% We define separate versions (large and small) for the frames:
+\newcommand*\@KP@Large@frame[2]{%
+    \setlength\unitlength{\fontdimen 22 #1\tw@}%
+    \vrule \@width\z@ \@height 4\unitlength \@depth\tw@\unitlength
+    \begin{picture}(6,2)(-3,-1)%
+        \def\@KP@Radius     {3}%
+        \def\@KP@Hole@radius{.5}% The same value seem adequate for both...
+        \def\@KP@Diameter   {6}%
+        #2%
+    \end{picture}%
+}
+\newcommand*\@KP@Small@frame[2]{%
+    \setlength\unitlength{\fontdimen 22 #1\tw@}%
+    \vrule \@width\z@ \@height \thr@@\unitlength \@depth\@ne\unitlength
+    \begin{picture}(4,2)(-2,-1)%
+        \def\@KP@Radius     {2}%
+        \def\@KP@Hole@radius{.5}% ... but let it be customizable too.
+        \def\@KP@Diameter   {4}%
+        #2%
+    \end{picture}%
+}
+
+% On the other hand, for the commands that draw the four different shapes, it
+% seems that all differences between the small variant and the large one can be
+% confined in the following three macros (here, we just declare their name):
+\newcommand*\@KP@Radius     {}
+\newcommand*\@KP@Hole@radius{}
+\newcommand*\@KP@Diameter   {}
+%
+% The four shapes:
+\newcommand*\@KP@Shape@A{%
+    \put(0,0){\circle{\@KP@Diameter}}%
+}
+\newcommand*\@KP@Shape@B{%
+    \Line(-\@KP@Radius,\@KP@Radius )(\@KP@Radius,-\@KP@Radius)%
+    \Line(-\@KP@Radius,-\@KP@Radius)(-\@KP@Hole@radius,-\@KP@Hole@radius)%
+    \Line(\@KP@Radius ,\@KP@Radius )(\@KP@Hole@radius ,\@KP@Hole@radius )%
+}
+\newcommand*\@KP@Shape@C{%
+    \cbezier(-\@KP@Radius,\@KP@Radius )(0,0)(0,0)(\@KP@Radius,\@KP@Radius )%
+    \cbezier(-\@KP@Radius,-\@KP@Radius)(0,0)(0,0)(\@KP@Radius,-\@KP@Radius)%
+}
+\newcommand*\@KP@Shape@D{%
+    \cbezier(-\@KP@Radius,-\@KP@Radius)(0,0)(0,0)(-\@KP@Radius,\@KP@Radius)%
+    \cbezier(\@KP@Radius ,-\@KP@Radius)(0,0)(0,0)(\@KP@Radius ,\@KP@Radius)%
+}
+\newcommand*\@KP@Shape@E{%
+    \Line(-\@KP@Radius,-\@KP@Radius)(\@KP@Radius,\@KP@Radius)%
+    \Line(-\@KP@Hole@radius,\@KP@Hole@radius)(-\@KP@Radius,\@KP@Radius)%
+    \Line(\@KP@Radius,-\@KP@Radius)(\@KP@Hole@radius,-\@KP@Hole@radius)%
+}
+\newcommand*\@KP@Shape@F{%
+    \Line(-\@KP@Radius,\@KP@Radius )(\@KP@Radius,-\@KP@Radius)%
+    \Line(-\@KP@Radius,-\@KP@Radius)(\@KP@Radius,\@KP@Radius)%
+}  
+\newcommand*\@KP@Shape@Z{%
+    \Line(-\@KP@Radius,-\@KP@Radius)(\@KP@Radius,\@KP@Radius)%
+    \Line(-\@KP@Hole@radius,\@KP@Hole@radius)(-\@KP@Radius,\@KP@Radius)%
+    \Line(\@KP@Radius,-\@KP@Radius)(-\@KP@Hole@radius,\@KP@Hole@radius)%
+}
+\newcommand*\@KP@Atomic@mathpalette[1]{%
+    \mathinner{% or "\mathord"?
+        % Note that a new level of grouping has just been entered (p. 290).
+        % \color{gray}% not used, for now
+        \mathchoice{%
+            \linethickness{.6\p@}% Tip: use thicker lines if you decide to 
+                                 % revert to using gray.
+            \@KP@Large@frame \textfont {#1}%
+        }{%
+            \linethickness{.4\p@}% adjustable
+            \@KP@Small@frame \textfont {#1}%
+        }{%
+            \linethickness{.3\p@}% adjustable
+            \@KP@Small@frame \scriptfont {#1}%
+        }{%
+            \linethickness{.2\p@}% adjustable
+            \@KP@Small@frame \scriptscriptfont {#1}%
+        }%
+    }%
+}
+
+% User-level commands:
+\newcommand*\KPA{\@KP@Atomic@mathpalette \@KP@Shape@A}
+\newcommand*\KPB{\@KP@Atomic@mathpalette \@KP@Shape@B}
+\newcommand*\KPC{\@KP@Atomic@mathpalette \@KP@Shape@C}
+\newcommand*\KPD{\@KP@Atomic@mathpalette \@KP@Shape@D}
+\newcommand*\KPE{\@KP@Atomic@mathpalette \@KP@Shape@E}
+\newcommand*\KPF{\@KP@Atomic@mathpalette \@KP@Shape@F}
+\newcommand*\KPZ{\@KP@Atomic@mathpalette \@KP@Shape@Z}
+
 \makeatother
 
-\DeclareRobustCommand{\gobblefour}[5]{}
-\newcommand*{\SkipTocEntry}{\addtocontents{toc}{\gobblefour}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% OTHER KNOTS, TANGLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\baselinestretch}{1.1}\normalsize
+\newcommand*\PKINK{
+\begin{tikzpicture}
+\begin{knot}[
+  consider self intersections,
+  flip crossing = 1,
+]
+\strand (0,0) .. controls +(3,1) and +(-3,1) .. (1,0);
+\end{knot}
+\end{tikzpicture}
+}
+
+\newcommand*\NKINK{
+\begin{tikzpicture}
+\begin{knot}[
+  consider self intersections,
+]
+\strand (0,0) .. controls +(3,1) and +(-3,1) .. (1,0);
+\end{knot}
+\end{tikzpicture}
+}
+
+\newcommand*\ARC{
+\begin{tikzpicture}
+\begin{knot}[]
+\strand (0,0) .. controls +(3,1) and +(-3,1) .. (1,0);
+\end{knot}
+\end{tikzpicture}
+}
+
+\geometry{
+ a4paper,
+ left=1.25in,
+ right=1in,
+ top=1in,
+ bottom=1in
+}

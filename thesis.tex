@@ -1,28 +1,42 @@
-\documentclass[11pt, leqno, oneside, openany]{amsbook}
+\documentclass[a4paper, 12pt, twoside, leqno]{report} %openany, leqno
 \usepackage{packagebundle}
-
-\input{preamble.tex}
-%\input{coverpage.tex}
+% \usepackage{cite}
+\input{preamble}
 
 \begin{document}
-\frontmatter
-%\maketitle
-
+\input{coverpage}
+%\frontmatter
 \pagenumbering{roman}
-\input{front.tex}
+\input{front}
 
 \tableofcontents
-
-\mainmatter
-\pagenumbering{arabic}
-\input{introduction.tex}
-\input{chapter-1}
-\input{chapter-2}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\pagenumbering{gobble} 
+                
+%\mainmatter
+\pagenumbering{arabic} 
+\input{chapter-1} 
+\input{chapter-2} 
 \input{chapter-3}
-\input{chapter-4}
-\input{conclusion}
-\input{biblios}
+\input{chapter-4}  
+\input{chapter-5}
+\input{chapter-6}
+%\input{chapter-7}
+%\input{appendix}
+
+\clearpage
+\bibliography{references}
+\nocite{*}
+\bibliographystyle{alpha}
 
 \end{document}
 
+% defined everything we will use and only define things we need.  under morphisms (which can be regarded as surface cobordisms),
 
+  
+% equation referencing ambiguity
+
+% inconsistencies in writhes for links
+% SA(D) state notation inconsistency
+
+% unknot detector 
